@@ -10,10 +10,12 @@ public:
 	static std::string romanize(std::wstring kana);
 
 	// Converts string of hiragana to katakana
-	static std::string hiraToKata(std::wstring hirigana);
+	// Throws InvalidHiraganaException
+	static std::wstring hiraToKata(std::wstring hirigana);
 
 	// Converts string of katakana to hiragana
-	static std::string kataToHiri(std::wstring katakana);
+	// Throws InvalidKatakanaException
+	static std::wstring kataToHiri(std::wstring katakana);
 
 protected:
 	class Hiragana {
@@ -24,7 +26,6 @@ protected:
 		// Returns true if string contains at least one hiragana character
 		static bool containsHiragana(std::wstring text);
 
-	protected:
 		// Maps of kana types
 		static const std::unordered_map<wchar_t, std::string> normal;
 		static const std::unordered_map<wchar_t, std::string> tiny;
@@ -39,7 +40,6 @@ protected:
 		// Returns true if string contains at least one katakana character
 		static bool containsKatakana(std::wstring text);
 
-	protected:
 		// Maps of kana types
 		static const std::unordered_map<wchar_t, std::string> normal;
 		static const std::unordered_map<wchar_t, std::string> tiny;
@@ -47,7 +47,7 @@ protected:
 		static const std::unordered_map<wchar_t, std::string> handakuten;
 	};
 
-	//static std::unordered_map<wchar_t, wchar_t> hiraKata;
-	//static std::unordered_map<wchar_t, wchar_t> kataHira;
+	static const std::unordered_map<wchar_t, wchar_t> hiraKata;
+	static const std::unordered_map<wchar_t, wchar_t> kataHira;
 };
 #endif
